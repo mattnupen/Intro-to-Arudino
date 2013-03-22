@@ -1,0 +1,23 @@
+/*--------    Intro to Arduino   --------
+    Sketch:  1.1 - Turn on LED
+    Turns on an LED
+  
+    This example code is in the public domain.
+*/
+
+// variable that holds the pin number for your LED
+int ledPin = 13;
+
+void setup() {
+  
+  // tell Arduino that pin 13 will sending/outputting information
+  pinMode(ledPin, OUTPUT);
+  
+}
+
+void loop() {
+  
+  //Turn on pin 13.  HIGH  = On, LOW = Off
+  digitalWrite(ledPin, HIGH);
+
+}
