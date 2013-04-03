@@ -1,0 +1,39 @@
+/*--------    Intro to Arduino   --------
+    Sketch:  3.2 - Serial Monitor
+ 
+ Use Serial Monitor to read the values coming from analog sensors
+ 
+ https://github.com/mattnupen/Intro-to-Arudino
+ This example code is in the public domain.
+ */
+
+int ledPin = 13;
+int potPin = A0;
+
+int blinkSpeed = 100;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);      
+  pinMode(potPin, INPUT);
+  
+  //Start communication with computer
+  Serial.begin(9600);
+}
+
+void loop(){
+  //read value from analog pin and set the variable equal to it.
+  blinkSpeed = analogRead(potPin);
+  
+  digitalWrite(ledPin, HIGH);
+  delay(blinkSpeed);
+  digitalWrite(ledPin,LOW);
+  delay(blinkSpeed);
+  
+  //Send the value of variable "blinkSpeed" to computer
+  Serial.println(blinkSpeed);
+}
+
+/*--------    ASSIGNMENT   --------
+  1.  What is the highest number read from the sensor?
+  2.  What is the lowest number read from the sensor?
+*/
