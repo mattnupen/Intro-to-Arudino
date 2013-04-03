@@ -1,0 +1,48 @@
+/*--------    Intro to Arduino   --------
+    Sketch:  3.3 - Calibrate Analog Input
+ 
+Calibrate, or re-map sensor values to a new range of numbers
+ 
+ https://github.com/mattnupen/Intro-to-Arudino
+ This example code is in the public domain.
+ */
+
+int ledPin = 13;
+int potPin = A0;
+
+int blinkSpeed = 100;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);      
+  pinMode(potPin, INPUT);
+  
+  //Start communication with computer
+  Serial.begin(9600);
+}
+
+void loop(){
+  blinkSpeed = analogRead(potPin);
+  Serial.print("raw value = ");  //print text
+  Serial.print(blinkSpeed);  //print raw value
+  Serial.print("\t"); // tab prinout
+  
+  //re-map one range of numbers to another
+  //re-map sensor values from analog sensor
+  blinkSpeed = map(blinkSpeed, 0, 255, 0, 1000);
+  
+  
+  Serial.print("re-mapped value = ");  //print text
+  Serial.println(blinkSpeed);  //print raw value
+  
+  digitalWrite(ledPin, HIGH);
+  delay(blinkSpeed);
+  digitalWrite(ledPin,LOW);
+  delay(blinkSpeed);
+  
+}
+
+/*--------    ASSIGNMENT   --------
+  1.  If the raw sensor value is 137, what is the re-mapped value?
+  2.  re-map blinkSpeed so the fastest blink speed is 40ms and the longest is 800ms
+  3.  Look up other "Math" functions at http://arduino.cc/en/Reference/HomePage (right column, 6 down)
+*/
