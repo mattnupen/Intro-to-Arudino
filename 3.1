@@ -1,0 +1,37 @@
+/*--------    Intro to Arduino   --------
+    Sketch:  3.1 - Analog Input
+
+ read a potentiometer to control blink speed of an LED
+ 
+ https://github.com/mattnupen/Intro-to-Arudino
+ This example code is in the public domain.
+ */
+
+int ledPin = 13;
+int potPin = A0;
+
+int blinkSpeed = 100;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);      
+  pinMode(potPin, INPUT);     
+}
+
+void loop(){
+  //read value from analog pin and set the variable equal to it.
+  blinkSpeed = analogRead(potPin);
+  
+  digitalWrite(ledPin, HIGH);
+  delay(blinkSpeed);
+  digitalWrite(ledPin,LOW);
+  delay(blinkSpeed);
+}
+
+/*--------    ASSIGNMENT   --------
+  1.  have blink speed double with same circuit.
+        HINT:use asterix * to multiply numbers or variables
+        2 * 2 = 4     for programming
+        2 x 2 = 4     for math class
+  2.  Have potentiometer only control the amount of time the LED is on, 
+        have the off time be 100ms
+*/
