@@ -1,0 +1,38 @@
+/*--------    Intro to Arduino   --------
+    Sketch:  2.1 - Blink multiple LEDs
+
+    https://github.com/mattnupen/Intro-to-Arudino
+    This example code is in the public domain.
+*/
+
+//set pin numbers for leds
+
+int ledPin1 = 0; 
+int ledPin2 = 1;
+
+
+// variable to hold blink speed
+int blinkSpeed = 100;
+
+void setup(){
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+}
+
+void loop(){
+  digitalWrite(ledPin1, HIGH);
+  
+  delay(blinkSpeed);
+  
+  digitalWrite(ledPin1,LOW);
+  digitalWrite(ledPin2,HIGH);
+  
+  delay(blinkSpeed);
+  
+  digitalWrite(ledPin2,LOW);
+}
+
+/*--------    ASSIGNMENT   --------
+  1.  Slow the blink speed
+  2.  Have LED 1 stay on and LED 2 blink
+*/
