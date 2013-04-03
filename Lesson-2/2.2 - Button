@@ -1,0 +1,38 @@
+/*--------    Intro to Arduino   --------
+    Sketch:  2.2 - Button
+
+ Turns on and off a light emitting diode(LED) connected to digital  
+ pin 0, when pressing a pushbutton attached to pin 2.  
+ 
+ https://github.com/mattnupen/Intro-to-Arudino
+ This example code is in the public domain.
+ */
+
+int buttonPin = 2;     // the number of the pushbutton pin
+int ledPin =  0;      // the number of the LED pin
+
+int buttonState = 0;         // variable for reading the pushbutton status
+
+void setup() {
+  // initialize the LED pin as an output:
+  pinMode(ledPin, OUTPUT);      
+  // initialize the pushbutton pin as an input:
+  pinMode(buttonPin, INPUT);     
+}
+
+void loop(){
+  // read the state of the pushbutton value:
+  buttonState = digitalRead(buttonPin);
+
+  if (buttonState == HIGH) {     
+    digitalWrite(ledPin, HIGH);  
+  } 
+  else {
+    digitalWrite(ledPin, LOW); 
+  }
+}
+
+/*--------    ASSIGNMENT   --------
+  1.  Have LED turn off when button is pressed
+  2.  Have button turn on LED on Pin 0, an LED on Pin 1 off when pressed
+*/
