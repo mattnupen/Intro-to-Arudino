@@ -1,0 +1,47 @@
+/*--------    Intro to Arduino   --------
+    Sketch:  3.4 - Light Sensor
+ 
+use a photocell to change blink speed
+A photoresistor (photocell) is a resistor who's resistance
+decreases as more light is shined on it (photons hit it)
+ 
+ This example code is in the public domain.
+ */
+
+int ledPin = 13;
+int sPin = A0; // Photoresistor sensor
+
+int blinkSpeed = 100;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);      
+  pinMode(sPin, INPUT);
+  
+  Serial.begin(9600);
+}
+
+void loop(){
+  blinkSpeed = analogRead(sPin);
+  Serial.print("raw value = ");  //print text
+  Serial.print(blinkSpeed);  //print raw value
+  Serial.print("\t"); // tab prinout
+  
+  //map(value, fromLow, fromHigh, toLow, toHigh)
+  blinkSpeed = map(blinkSpeed, 0, 255, 0, 255);
+  
+  
+  Serial.print("re-mapped value = ");  //print text
+  Serial.println(blinkSpeed);  //print raw value
+  
+  digitalWrite(ledPin, HIGH);
+  delay(blinkSpeed);
+  digitalWrite(ledPin,LOW);
+  delay(blinkSpeed);
+  
+}
+
+/*--------    ASSIGNMENT   --------
+  1.  what is the min and max values from the photocell?
+  2.  re-map blinkSpeed so that it ranges from 0 to 1000
+        you'll need to remap the incoming (from) low and high values
+ */
